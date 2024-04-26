@@ -17,7 +17,7 @@ if __name__ == '__main__':
     wt = [int(x) for x in input("Enter the weight for the corresponding values: ").split()]
     n = len(v)
     answer = knapsack(w,wt,v,n)
-    print("Answer = : ", answer)
+    print("Answer = ", answer)
 
 #Time complexity = O(2^n)
 
