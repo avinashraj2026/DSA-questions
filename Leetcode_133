@@ -1,0 +1,26 @@
+from collections import deque
+
+class Solution(object):
+    def cloneGraph(self, node):
+        """
+        :type node: Node
+        :rtype: Node
+        """
+        if not node:
+            return None
+
+        queue = deque([node])
+        copy_map = {}
+        copy_map[node] = Node(val=node.val)
+
+        while queue:
+            curr = queue.popleft()
+
+            for neighbor in curr.neighbors:
+                if neighbor not in copy_map:
+                    copy_map[neighbor] = Node(val=neighbor.val)
+                    queue.append(neighbor)
+                
+                copy_map[curr].neighbors.append(copy_map[neighbor])
+        
+        return copy_map[node]
